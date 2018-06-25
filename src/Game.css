@@ -75,7 +75,7 @@
 		cursor: pointer;
 	}
 
-	#character, #treasure {
+	.sprites {
 		position: absolute;
 		margin-left: -50px;
 		width: 100px;
@@ -112,7 +112,7 @@
 		height: 91vw;
 	}
 
-	#character, #treasure {
+	.sprites {
 		position: absolute;
 		margin-left: -11.25vw;
 		width: 22.5vw;

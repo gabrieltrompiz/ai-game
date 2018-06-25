@@ -8,10 +8,15 @@ class Game extends Component {
     this.state = {reload: null};
   }
   renderBoxes() {
-    let characterNumber = Math.floor(Math.random() * 16);
+    let positions = [];
+    while(positions.length < 5){
+      var randomnumber = Math.floor(Math.random() * 16);
+      if(positions.indexOf(randomnumber) > -1) continue;
+      positions[positions.length] = randomnumber;
+    }
     var boxes = []
     for (var i = 0; i < 16; i++) {
-      boxes.push(<Box id={i} key={i} num={characterNumber}/>);
+      boxes.push(<Box id={i} key={i} positions={positions}/>);
     }
     return boxes;
   }
