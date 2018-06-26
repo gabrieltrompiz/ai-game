@@ -1,5 +1,5 @@
 .navbar-expand-md {
-	background-color: black;
+	background-color: #20232A;
 }
 
 .navbar-brand {
@@ -9,4 +9,9 @@
 
 .fa-angrycreative {
 	font-size: 5rem;
+}
+
+.navbar-toggler {
+	color: white;
+	font-size: 24px;
 }
