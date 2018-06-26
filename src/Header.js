@@ -7,7 +7,7 @@ class Header extends Component {
       <header className="navbar navbar-expand-md">
         <div className="container-fluid">
           <a className="navbar-brand" href="#hola">
-           <i className="fab fa-angrycreative"></i>
+           <i className="fab fa-connectdevelop"></i>
           </a>
         </div>
       </header>
