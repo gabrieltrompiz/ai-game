@@ -8,11 +8,19 @@ class Game extends Component {
     this.state = {positions: this.randomLocations()};
   }
   
-  renderBoxes() {
+  loopBoxes() {
     var boxes = []
-    for (var i = 0; i < 16; i++) {
-      boxes.push(<Box id={i} key={i} positions={this.state.positions}/>);
-    }
+    var count = 0;
+    for (let i = 0; i <= 15; i++) {
+      if (this.state.positions[count] === i) {
+        boxes.push(<Box id={i} key={i} positions={this.state.positions} sprite={true} count={count}/>);
+        count++;
+        }
+        else {
+          boxes.push(<Box id={i} key={i} positions={this.state.positions} sprite={false}/>);
+        }
+      }
+    console.log(this.state.positions)
     return boxes;
   }
 
@@ -34,7 +42,7 @@ class Game extends Component {
     return (
       <div className="game unselectable">
         <div className="grid undraggable">
-          {this.renderBoxes()}
+          {this.loopBoxes()}
         </div>
         <button type="button" onClick={() => this.reload()} className="button">Refresh</button>
       </div>
