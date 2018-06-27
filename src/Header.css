@@ -1,17 +1,32 @@
-.navbar-expand-md {
-	background-color: #20232A;
-}
-
-.navbar-brand {
-	text-align: left;
-	color: white;
+.navbar {
+	background-color: #20232a;
+	padding-bottom: 1rem;
+	padding-top: 1rem;
+	overflow: hidden;
 }
 
 .fa-connectdevelop {
-	font-size: 5rem;
+	font-size: 4rem;
+	color: white;
 }
 
-.navbar-toggler {
+.toggler {
+	margin-top: 13px;
+	font-size: 1.8rem;
 	color: white;
-	font-size: 24px;
+	background-color: transparent;
+	border-color: transparent;
+	float: right;
+}
+
+@media only screen and (max-width: 404px) {
+	.toggler {
+		display: block;
+	}
+}
+
+@media only screen and (min-width: 404px) {
+   .toggler {
+   	 display: none;
+   }
 }

@@ -12,8 +12,8 @@
 }
 
 .button {
+	position: relative;
 	float: right;
-	margin-top: 1rem;
 	transition-duration: 0.4s;
 	color: #218838;
 	border-radius: 0.6rem;
@@ -21,8 +21,6 @@
 	border-color: #218838;
 	border-style: solid;
 	border-width: 1px;
-	width: 6rem;
-	height: 2rem;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -31,7 +29,23 @@
 	outline-color: transparent;
 }
 
+#starter {
+	color: #218838;
+	border-radius: 0.6rem;
+	background: transparent;
+	border-color: #218838;
+	border-style: solid;
+	border-width: 1px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#starter:focus {
+	outline-color: transparent;
+}
+
 .grid {
+	position: absolute;
 	-webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.45);
 	-moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.45);
 	box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.45);
@@ -47,11 +61,11 @@
 		text-align: center;
 	}
 
-	#logo {
-		margin: 0 auto;
-		width: 404px;
-		height: auto;
-	}
+	 #logo {
+	 	height: 80px;
+	 	width: auto;
+	 	margin-bottom: 1.5rem;
+	 }
 
 	.box {
 	  margin-left: auto;
@@ -68,10 +82,18 @@
 		flex-wrap: wrap;
 		margin-left: auto;
 		margin-right: auto;
-		margin-top: 2rem;
 		width: 404px;
 		height: 404px;
 	}
+
+	.imagesGrid {
+		display: flex;
+		flex-wrap: wrap;
+		margin-left: auto;
+		margin-right: auto;
+		width: 404px;
+		height: 404px;
+  }
 
 	.button:hover {
 		transition-duration: 0.4s;
@@ -80,23 +102,51 @@
 		cursor: pointer;
 	}
 
-	.sprites {
-		position: absolute;
-		margin-left: -50px;
-		width: 100px;
-		height: 100px;
+	.button {
+		margin-top: 1rem;
+		width: 6rem;
+		height: 2rem;
+		font-size: 1rem;
 	}
 
+	.sprites {
+		position: absolute !important;
+ 		width: 100px;
+		height: 100px;
+		transition-duration: 0.3s;
+	}
+
+	#starter  {
+		transition-duration: 0.4s;
+		margin-top: 420px;
+		width: 6rem;
+		height: 2rem;
+		font-size: 1rem;
+	}
+
+	#starter:hover {
+		transition-duration: 0.4s;
+		color: white;
+		background: #218838;
+		cursor: pointer;
+	}
 }
 
 @media only screen and (max-width: 404px) {
 
 	.game {
 		margin: 0 auto;
+		margin-top: 4vw;
 		width: 91vw;
 		height: auto;
 		text-align: center;
 	}
+
+	#logo {
+	 	height: 20vw;
+	 	width: auto;
+	 	margin-bottom: 5vw;
+	 }
 
 	.box {
 	  margin-left: auto;
@@ -112,15 +162,38 @@
 		flex-wrap: wrap;
 		margin-left: auto;
 		margin-right: auto;
-		margin-top: 8vw;
 		width: 91vw;
 		height: 91vw;
 	}
 
+	.imagesGrid {
+		display: flex;
+		flex-wrap: wrap;
+		margin-left: auto;
+		margin-right: auto;
+		width: 91vw;
+		height: 91vw;
+	}
+
+	.button {
+		margin-top: 3vw;
+		width: 30vw;
+		height: 10vw;
+		font-size: 5vw;
+	}
+
+	#starter  {
+		transition-duration: 0.4s;
+		margin-top: 94vw;
+		width: 30vw;
+		height: 10vw;
+		font-size: 5vw;
+	}
+
 	.sprites {
 		position: absolute;
-		margin-left: -11.25vw;
 		width: 22.5vw;
 		height: 22.5vw;
+		transition-duration: 0.3s
 	}
 }
