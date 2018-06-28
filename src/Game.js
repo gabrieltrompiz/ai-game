@@ -25,64 +25,6 @@ class Game extends Component {
         this.setState({view: window.innerWidth})
   }
 
-  getTheme() {
-    //To add themes follow format: [character, treasure, traps, monster, logo]
-    var themes = [[require('./images/link.png'), require('./images/triforce.gif'), //TLOZ
-                   require('./images/fire.png'), require('./images/ganon.png'), require('./images/tloz.png')], //TLOZ
-                  [require('./images/mario.png'), require('./images/star.gif'), //Mario
-                   require('./images/boo.png'), require('./images/bowser.png'), require('./images/sm.png')], //Mario
-                  [require('./images/sonic.png'), require('./images/emerald.png'), //Sonic
-                   require('./images/metal.gif'), require('./images/eggman.gif'), require('./images/sth.png')]]; //Sonic
-
-    return themes[this.state.theme];
-  }
-
-  getPositionCSS(boxNumber) {
-    // [margin-left, margin-top]
-    var boxes;
-    if (!this.getView()) {
-      boxes = [[0, 0],   [100, 0],   [200, 0],   [300, 0],
-               [0, 100], [100, 100], [200, 100], [300, 100],
-               [0, 200], [100, 200], [200,200],  [300, 200],
-               [0, 300], [100, 300], [200, 300], [300, 300]];
-    }
-    else {
-      boxes = [[0, 0],    [22.5, 0],    [45, 0],    [67.5, 0],
-               [0, 22.5], [22.5, 22.5], [45, 22.5], [67.5, 22.5],
-               [0, 45],   [22.5, 45],   [45, 45],   [67.5, 45],
-               [0, 67.5], [22.5, 67.5], [45, 67.5], [67.5, 67.5]];
-    }
-    return boxes[boxNumber];
-  }
-
-  getView() {
-    var x = window.matchMedia("(max-width: 404px)");
-    if(x.matches) { return true } //Return true = mobile
-    else { return false } //Return false =  desktop/large screens
-  }
-
-  setTheme(selectedTheme){
-    this.setState({theme: selectedTheme});
-  }
-
-  loopBoxes() {
-    var boxes = []
-      for (let i = 0; i < 16; i++){
-        boxes.push(<Box id={i} key={i} />);
-      }
-    return boxes;
-  }
-
-  randomLocations() {
-    var positionsArray = [12];
-    while(positionsArray.length < 5){
-      var randomnumber = Math.floor(Math.random() * 16);
-      if(positionsArray.indexOf(randomnumber) > -1) continue;
-      positionsArray[positionsArray.length] = randomnumber;
-    }
-    return positionsArray;
-  }
-
   reload() {
     this.setState({positions: this.randomLocations()});
   }
@@ -104,8 +46,69 @@ class Game extends Component {
         </div>
         <button type="button" onClick={() => this.reload()} className="button">Refresh</button>
         <button type="button" onClick={() => this.setTheme(1)}>Change Theme</button>
+          <audio autoPlay loop>
+           <source src={setterTheme[5]} type="audio/mpeg" id="music"/>
+         </audio>
       </div>
     );
+  }
+
+  getTheme() {
+    //To add themes follow format: [character, treasure, traps, monster, logo]
+    var themes = [[require('./images/link.png'), require('./images/triforce.gif'), require('./images/fire.png'),
+                   require('./images/ganon.png'), require('./images/tloz.png'), require('./images/tloz.mp3')], //TLOZ
+                  [require('./images/mario.png'), require('./images/star.gif'), //Mario
+                   require('./images/boo.png'), require('./images/bowser.png'), require('./images/sm.png')], //Mario
+                  [require('./images/sonic.png'), require('./images/emerald.png'), //Sonic
+                   require('./images/metal.gif'), require('./images/eggman.gif'), require('./images/sth.png')]]; //Sonic
+
+    return themes[this.state.theme];
+  }
+
+  setTheme(selectedTheme){
+    this.setState({theme: selectedTheme});
+  }
+
+  loopBoxes() {
+    var boxes = []
+      for (let i = 0; i < 16; i++){
+        boxes.push(<Box key={i} />);
+      }
+    return boxes;
+  }
+
+  randomLocations() {
+    var positionsArray = [12];
+    while(positionsArray.length < 5){
+      var randomnumber = Math.floor(Math.random() * 16);
+      if(positionsArray.indexOf(randomnumber) > -1) continue;
+      positionsArray[positionsArray.length] = randomnumber;
+    }
+    return positionsArray;
+  }
+
+   getPositionCSS(boxNumber) {
+    // [margin-left, margin-top]
+    var boxes;
+    if (!this.getView()) {
+      boxes = [[0, 0],   [100, 0],   [200, 0],   [300, 0],
+               [0, 100], [100, 100], [200, 100], [300, 100],
+               [0, 200], [100, 200], [200,200],  [300, 200],
+               [0, 300], [100, 300], [200, 300], [300, 300]];
+    }
+    else {
+      boxes = [[0, 0],    [22.5, 0],    [45, 0],    [67.5, 0],
+               [0, 22.5], [22.5, 22.5], [45, 22.5], [67.5, 22.5],
+               [0, 45],   [22.5, 45],   [45, 45],   [67.5, 45],
+               [0, 67.5], [22.5, 67.5], [45, 67.5], [67.5, 67.5]];
+    }
+    return boxes[boxNumber];
+  }
+
+  getView() {
+    var x = window.matchMedia("(max-width: 404px)");
+    if(x.matches) { return true } //Return true = mobile
+    else { return false } //Return false =  desktop/large screens
   }
 }
 
