@@ -43,7 +43,7 @@ class Character extends Component {
   							   marginTop: this.props.getPositionCSS(this.state.position)[1]};
   	}
     return(
-    	<div>
+    	<div className="runner">
       	<img style={charStyle} src={this.props.theme} className='sprites' id={this.state.position} alt='character'/>
       	<button type="button" id="starter" onClick={() => this.hellLogic(this.state.position)}>Next</button>
       </div>	

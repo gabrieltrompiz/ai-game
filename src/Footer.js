@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import './Footer.css'
-import 'bootstrap';
 
 class Footer extends Component {
 	render() {
 		return (
-			<footer className="page-footer font-small unique-color-dark mt-4">
-				<div className="container-fluid">
-					
-				</div>
+			<footer className="page-footer unselectable undraggable">
+				<p className="love">Made with <i className="fas fa-heart"></i> by Gabriel Trompiz</p>
 			</footer>
 		);
 	}

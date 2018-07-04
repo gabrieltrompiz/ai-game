@@ -1,41 +1,62 @@
 .navbar {
 	background-color: #20232a;
-	padding-bottom: 1rem;
-	padding-top: 1rem;
-	overflow: hidden;
 }
  
- @media only screen and (min-width: 404px) {
+ @media only screen and (min-width: 575px) {
  	.fa-connectdevelop {
 		font-size: 4rem;
 		color: white;
 	}
- }
-
-@media only screen and (max-width: 404px) {
-	.fa-connectdevelop {
-		font-size: 20vw;
+	.fa-github{
+		font-size: 1.5rem;
 		color: white;
 	}
-}
+	.navLogo {
+		width: 1.5rem;
+	}
+	.btn-navbar:hover {
+		background-color: #1C1F25;
+		transition-duration: 0.4s;
+	}
+ }
 
-.toggler {
-	margin-top: 1vw;
-	font-size: 10vw;
-	color: white;
-	background-color: transparent;
-	border-color: transparent;
-	float: right;
-}
-
-@media only screen and (max-width: 404px) {
-	.toggler {
-		display: block;
+@media only screen and (max-width: 575px) {
+	.fa-connectdevelop {
+		font-size: 15vw;
+		color: white;
+	}
+	.fa-github{
+		font-size: 6vw;
+		color: white;
+	}
+	.navLogo {
+		width: 8vw;
+	}
+	.btn-navbar {
+		margin-bottom: 4vw;
 	}
 }
 
-@media only screen and (min-width: 404px) {
-   .toggler {
-   	 display: none;
-   }
+.navbar-toggler {
+	color: white;
+}
+
+.navbar a:visited,.navbar a:link,.navbar a:active{
+  transition-duration: 0.4s;
+  color: white;
+}
+
+.btn-navbar {
+	background-color: transparent;
+	cursor: pointer;
+	color: white;
+	border-radius: 0.6rem;
+	border-style: solid;
+	margin-left: 1rem;
+	border-color: transparent;
+	transition-duration: 0.4s;
+}
+
+.btn-navbar:focus {
+	outline-color: transparent;
 }
