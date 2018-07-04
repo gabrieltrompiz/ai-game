@@ -9,8 +9,14 @@ import Monster from './Monster'
 class Game extends Component {
   constructor(props) {
     super(props);
-    this.state = {positions: this.randomLocations(), theme: 0, view: window.innerWidth};
+    this.state = {positions: this.randomLocations(), theme: this.props.theme, view: window.innerWidth, reload: false};
     this.handleResize = this.handleResize.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps){
+    if (nextProps.theme !== this.state.theme) {
+      this.setState({ theme: nextProps.theme });
+    }
   }
   
   componentDidMount() {
@@ -26,7 +32,7 @@ class Game extends Component {
   }
 
   reload() {
-    this.setState({positions: this.randomLocations()});
+    this.setState({positions: this.randomLocations(), reload: !this.state.reload});
   }
 
   render(){
@@ -34,21 +40,18 @@ class Game extends Component {
     return (
       <div className="game unselectable">
         <img src={setterTheme[4]} id="logo" alt="logo"/>
-        <div className="grid undraggable">
+        <div className="grid">
           {this.loopBoxes()}
         </div>
         <div className="imagesGrid">
-          <Character position={this.state.positions[0]} theme={setterTheme[0]} getPositionCSS={this.getPositionCSS} getView={this.getView}/>
+          <Character position={this.state.positions[0]} theme={setterTheme[0]} fire={setterTheme[5]} 
+          getPositionCSS={this.getPositionCSS} getView={this.getView} reload={this.state.reload}/>
           <Treasure position={this.state.positions[1]} theme={setterTheme[1]} getPositionCSS={this.getPositionCSS} getView={this.getView}/>
           <Traps position={this.state.positions[2]} theme={setterTheme[2]} getPositionCSS={this.getPositionCSS} getView={this.getView}/>
           <Traps position={this.state.positions[3]} theme={setterTheme[2]} getPositionCSS={this.getPositionCSS} getView={this.getView}/>
           <Monster position={this.state.positions[4]} theme={setterTheme[3]} getPositionCSS={this.getPositionCSS} getView={this.getView}/>
         </div>
-        <button type="button" onClick={() => this.reload()} className="button">Refresh</button>
-        <button type="button" onClick={() => this.setTheme(1)}>Change Theme</button>
-          <audio autoPlay loop>
-           <source src={setterTheme[5]} type="audio/mpeg" id="music"/>
-         </audio>
+        <button type="button" onClick={() => this.reload()} className="button">Restart</button>
       </div>
     );
   }
@@ -56,11 +59,13 @@ class Game extends Component {
   getTheme() {
     //To add themes follow format: [character, treasure, traps, monster, logo]
     var themes = [[require('./images/link.png'), require('./images/triforce.gif'), require('./images/fire.png'),
-                   require('./images/ganon.png'), require('./images/tloz.png'), require('./images/tloz.mp3')], //TLOZ
-                  [require('./images/mario.png'), require('./images/star.gif'), //Mario
-                   require('./images/boo.png'), require('./images/bowser.png'), require('./images/sm.png')], //Mario
+                   require('./images/ganon.png'), require('./images/tloz.png')], //TLOZ
+                  [require('./images/mario.png'), require('./images/star.gif'), require('./images/boo.png'), //Mario
+                   require('./images/bowser.png'), require('./images/sm.png')], //Mario
                   [require('./images/sonic.png'), require('./images/emerald.png'), //Sonic
-                   require('./images/metal.gif'), require('./images/eggman.gif'), require('./images/sth.png')]]; //Sonic
+                   require('./images/shadow.png'), require('./images/eggman.gif'), require('./images/sth.png')], //Sonic
+                  [require('./images/samus.png'), require('./images/misc.png'), require('./images/metroidsuper.png'),
+                   require('./images/ridley.png'), require('./images/supermetroid.png')]]; //Sonic
 
     return themes[this.state.theme];
   }

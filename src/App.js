@@ -5,16 +5,20 @@ import Header from './Header';
 import Footer from './Footer';
 
 class App extends Component {
+	constructor(props){
+		super(props)
+		this.state = {theme: 0}
+	}
 
-	componentDidMount() {
-	    document.getElementById("loading-screen").remove();
+	handleChangeTheme = event => {
+		this.setState({theme: event.target.id})
 	}
 
 	render() {
 		return(
 			<div id="app">
-				<Header />
-				<Game />
+				<Header changeTheme={this.handleChangeTheme} />
+				<Game theme={this.state.theme}/>
 				<Footer />
 			</div>
 		);
