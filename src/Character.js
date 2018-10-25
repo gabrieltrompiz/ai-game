@@ -383,6 +383,7 @@ class Character extends Component {
 		this.setState({position: pos}, function() { 
 			this.didIDie(this.state.position); 
 			this.didIWin(this.state.position);
+			console.log(this.rules);
 		});
 	}
 }
