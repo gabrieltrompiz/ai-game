@@ -6,9 +6,6 @@ class Header extends Component {
     return (
       <header className="navbar navbar-expand-sm">
       <div className="container-fluid">
-        <a className="navbar-brand">
-          <i className="fab fa-connectdevelop" alt="logo" />
-        </a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar01">
           <i className="fas fa-bars"></i>
         </button>
